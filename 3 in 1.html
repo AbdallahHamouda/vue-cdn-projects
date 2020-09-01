@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf8">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+
+	</head>
+	<body>
+
+		<div id="myapp">
+            <input type="text" v-model="input">
+            <button @click="Changetoslug">Turn to slug</button>
+			<h4>{{output}}</h4>
+			<hr>
+            <input :type="inputtype">
+			<button @click="inputchange">Show</button>
+			<hr>
+<h1>Product</h1>	
+<h4>Price {{price}} </h4>		
+<h4>amount {{amount}} </h4>		
+<input type="range" v-model="amount" >
+			<button >Purchase with {{totalprice}}</button>
+			<h2>Total price {{totalprice}}</h2>
+		</div>
+		<script>
+		new Vue({
+			el: '#myapp',
+			data: {
+				inputtype: 'password',
+                input:'',
+                output:'',
+				price:'70',
+				amount:'9',
+			
+				
+
+			},
+			methods: {
+               inputchange: function () {
+                   this.inputtype=this.inputtype === 'password' ?'text' :'password'
+               },
+               Changetoslug: function () {
+                   var x =this.input ;
+                  x = x.toLowerCase();
+                   x = x.replace(/\s+/g,'-');
+                   this.output = x ;
+
+               }
+			},
+			computed: {
+				totalprice: function () {
+					return this.price*this.amount
+				}
+
+			}
+		})
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf8">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	</head>
+	<body>
+        <style>
+            #myapp{
+                background-color: var(--maincolor);
+                color: var(--textcolor);
+            }
+        </style>
+
+		<div id="myapp" :style="{'--maincolor': pagecolor , '--textcolor': textcolor}">
+     <h1>{{maintxt}}</h1>
+     <li><button @click="changeflase" v-show="!state">light mode</button></li>
+     <li><button @click="change" v-show="state">dark mode</button></li>
+		</div>
+		<script>
+		new Vue({
+			el: '#myapp',
+			data: {
+				pagecolor:"white",
+                textcolor:"black",
+                maintxt:"Light",
+                Statechanged:"dark",
+                state:true,
+
+			},
+			methods: {
+                change: function() {
+                    this.pagecolor = "black";
+                    this.textcolor="white";
+                    this.maintxt="Dark",
+                    this.state=false
+
+                },
+                changefalse: function() {
+                    this.pagecolor = "white";
+                    this.textcolor="black";
+                    this.maintxt="light",
+                    this.state=true
+
+                }
+        
+			},
+            computed: {
+                
+            }
+		})
+		</script>
+		
+	</body>
+</html>

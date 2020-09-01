@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    </head>
+    <body>
+        <div id="myapp">
+        <div v-for="err in errors"> 
+            {{err}}
+        </div>
+        <p v-show="areas">You can now login succesfully</p>
+
+        <br>
+        <input type="text" placeholder="user" required v-model="user">   
+        <br>    
+        <input type="text" placeholder="email" required v-model="em"> 
+        <br>      
+        <input type="text" placeholder="password" required v-model="pass"> 
+        <br> 
+        <button @click="verify">Submit</button>  
+    </div>  
+        <script>
+         new Vue ({
+               el:'#myapp',
+               data: {
+                   errors:[],
+                   user: '',
+                   em: '',
+                   pass:'',
+                   areas:false,
+               },
+               methods: {
+                verify: function(e) {
+                    this.errors=[];
+                    this.areas=false;
+                    if (!this.user) {
+                        this.errors.push("the username can't be empty")
+                    }
+                    if (!this.em){
+                        this.errors.push("the email can't be empty")
+
+                    }
+                     if (!this.pass){
+                        this.errors.push("the passwonrd can't be empty")
+
+                    }
+                    else{
+                        this.areas = !this.areas
+                    }
+                    e.preventDefault();
+                }
+
+               }
+           });
+        </script>
+    </body>
+</html>

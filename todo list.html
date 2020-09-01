@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf8">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	</head>
+	<body>
+<h1>todoist</h1>
+
+		<div id="myapp">
+			<input type="text" v-model="textfortodo">
+			<button @click="addtask" :disabled="!textfortodo">add me</button>
+			<div v-for="(task , index) in tasks">
+				<a href="" @click="">{{ task.words }}</a>
+				<button style="background-color: red; color: aliceblue;" @click="deletetask(index)">Delete</button>
+			</div>
+		</div>
+		<script>
+		new Vue({
+			el: '#myapp',
+			data: {
+				tasks:[],
+				textfortodo: '',
+
+			},
+			methods: {
+                addtask: function() {
+					this.tasks.push({words:this.textfortodo,done:false});
+					this.textfortodo='';
+				},
+				deletetask: function(index) {
+					this.tasks.splice(index, 1);
+				}
+			}
+		})
+		</script>
+		
+	</body>
+</html>
